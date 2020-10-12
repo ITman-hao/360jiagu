@@ -1,0 +1,27 @@
+apply plugin: 'java-library'//创建的是model-java library
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()//implements Plugin<Project>引用gradle插件里面的api
+    implementation 'com.android.tools.build:gradle:4.0.2'//获取android下面的apk用到android的东西，假如依赖
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+//上传插件，官方插件
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        //在右边的任务那里生成一个Tast=publish+AutoJiaguPlugin+固定的
+        AutoJiaguPlugin(MavenPublication) {
+            //build.gradle 中引用的classpath
+            //classpath "com.cjh:jiagu:1.0"
+            from components.java
+            groupId 'com.cjh'
+            artifactId 'jiagu'
+            version '1.0'
+        }
+    }
+}
+
