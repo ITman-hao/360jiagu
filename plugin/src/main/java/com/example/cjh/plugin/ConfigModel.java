@@ -1,7 +1,7 @@
 package com.example.cjh.plugin;
 
 /**
- * ç”¨æ¥é…ç½®ç”¨æˆ·çš„ä¿¡æ¯
+ * ÓÃÀ´ÅäÖÃÓÃ»§µÄĞÅÏ¢
  */
 public class ConfigModel {
     private String userName;

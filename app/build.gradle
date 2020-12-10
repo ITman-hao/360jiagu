@@ -1,6 +1,22 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.cjh.plugin'//resources里面那个文件的名称com.cjh.plugin.properties
+apply plugin: 'com.geo.360jiaguplugin'//resources里面那个文件的名称com.cjh.plugin.properties
 
+
+def releaseTimeYMD() {
+    //return "20180501"
+    return new Date().format("yyMMdd", TimeZone.getTimeZone("GMT+8"))
+}
+
+def releaseTimeHMS() {
+    return new Date().format("HHmmss", TimeZone.getTimeZone("GMT+8"))
+}
+
+def getVersionName() {
+    // 当前使用的版本名字定义
+    return "4.0." + releaseTimeYMD() + "." + releaseTimeHMS()
+}
+
+def verName = getVersionName()
 
 android {
     compileSdkVersion 29
@@ -9,8 +25,9 @@ android {
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName verName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "default"
     }
     buildTypes {
         release {
@@ -18,24 +35,42 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
+//    productFlavors {
+//        Surpad1 {
+//            // 测试用
+//        }
+//
+//        Surpad2 {
+//            // 南方
+//        }
+//    }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:+'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                // 修改生成的apk文件名
+                //variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/${productFlavors[0].name}")
+                outputFileName = "v${defaultConfig.versionName}.apk"
+            }
+    }
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'com.android.support:appcompat-v7:+'
+        implementation 'com.android.support.constraint:constraint-layout:2.0.2'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'com.android.support.test:runner:1.0.2'
+        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    }
 }
 
 jiagu {
     userName '13415627597'
     userPassword '14778589162cao'
-    keyStorePath 'E:\\AndroidStudioAllProjects\\MyCustomGradlePlugins\\jks\\jks.jks'
+    keyStorePath 'G:\\AllProjects\\MyCustomGradlePlugins\\jks\\jks.jks'
     keyStorePassword '123456'
     keyAlias 'key0'
     keyAliasPassword '123456'
-    jarToolsPath 'E:\\AndroidStudioAllProjects\\MyCustomGradlePlugins\\360\\jiagu\\jiagu.jar'
+    jarToolsPath 'G:\\AllProjects\\MyCustomGradlePlugins\\360\\jiagu\\jiagu.jar'
 }
 

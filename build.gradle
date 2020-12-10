@@ -9,15 +9,26 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'
-        classpath 'com.cjh:jiagu:1.0'
+        // 将项目发布到JCenter 所需要的jar添加依赖
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath "com.cjh:jiagu:1.0"
     }
 }
+
+
 
 allprojects {
     repositories {
         google()
         jcenter()
     }
+
+    tasks.withType(Javadoc) { // 新增
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+
 }
 
 task clean(type: Delete) {
