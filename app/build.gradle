@@ -69,12 +69,12 @@ android {
 }
 
 jiagu {
-    userName '13415627597'
-    userPassword '14778589162cao'
-    keyStorePath 'G:\\AllProjects\\MyCustomGradlePlugins\\jks\\jks.jks'
-    keyStorePassword '123456'
-    keyAlias 'key0'
-    keyAliasPassword '123456'
-    jarToolsPath 'G:\\AllProjects\\MyCustomGradlePlugins\\360\\jiagu\\jiagu.jar'
+    userName USER_NAME
+    userPassword USER_PASSWORD
+    keyStorePath KEY_STOREPATH
+    keyStorePassword KEYSTORE_PASSWORD
+    keyAlias RELEASE_KEY_ALIAS
+    keyAliasPassword KEY_ALIAS_PASSWORD
+    jarToolsPath JAR_TOOLS_PATH
 }
 
