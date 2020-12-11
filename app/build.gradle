@@ -35,22 +35,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    productFlavors {
-//        Surpad1 {
-//            // 测试用
-//        }
-//
-//        Surpad2 {
-//            // 南方
-//        }
-//    }
+    productFlavors {
+        Surpad_geo {
+            // 吉欧
+        }
+
+        Surpad_unistrong {
+            // 吉欧定制版本
+        }
+    }
 
     android.applicationVariants.all {
         variant ->
-            variant.outputs.all {
-                // 修改生成的apk文件名
-                //variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/${productFlavors[0].name}")
-                outputFileName = "v${defaultConfig.versionName}.apk"
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    variant.outputs.all {
+                        variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/${productFlavors[0].name}/${buildType.name}")
+                        outputFileName = "${productFlavors[0].name}_${buildType.name}.apk"
+                    }
+                }
             }
     }
 

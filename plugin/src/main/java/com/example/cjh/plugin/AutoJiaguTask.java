@@ -4,6 +4,7 @@ import org.gradle.api.Action;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.process.ExecSpec;
+import org.gradle.wrapper.Install;
 
 import java.io.File;
 
@@ -50,5 +51,13 @@ public class AutoJiaguTask extends DefaultTask {
                         "-jiagu", mApk.getAbsolutePath(), mApk.getParentFile(), "-autosign");
             }
         });
+
     }
+
+
+
+
 }
+
+
+
