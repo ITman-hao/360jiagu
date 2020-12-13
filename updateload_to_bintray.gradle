@@ -9,9 +9,9 @@ def gitUrl = 'https://github.com/ITman-hao/360jiaguPlugin.git' // Git仓库的ur
 // 唯一包名，比如implementation 'groupId:artifactId:version'中的groupId就是这里配置的。
 group = "com.geo"
 //项目名称, 比如implementation 'groupId:artifactId:version'中的artifactId就是这里配置的。
-project.archivesBaseName = "360jiagu"
+//project.archivesBaseName = "360jiagu"
 //项目引用的版本号，比如implementation 'com.geo:360jiagu:1.0.0'中的version就是这里配置的。
-version = "1.0.0"
+version = "3.0"
 
 install {
     repositories.mavenInstaller {
@@ -53,28 +53,28 @@ install {
 }
 
 // 生成jar包的task，不需要修改。
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-// 生成jarDoc的task，不需要修改。
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    // destinationDir = file("../javadoc/")
-    failOnError false // 忽略注释语法错误，如果用jdk1.8你的注释写的不规范就编译不过。
-}
-
-// 生成javaDoc的jar，不需要修改。
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//// 生成jarDoc的task，不需要修改。
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    // destinationDir = file("../javadoc/")
+//    failOnError false // 忽略注释语法错误，如果用jdk1.8你的注释写的不规范就编译不过。
+//}
+//
+//// 生成javaDoc的jar，不需要修改。
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
 // 这里是读取Bintray相关的信息，我们上传项目到github上的时候会把gradle文件传上去，
 // 所以不要把帐号密码的信息直接写在这里，写在local.properties中，这里动态读取。
@@ -88,7 +88,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "MyMaven"  //Repository名字 需要自己在bintray网站上先添加
+        repo = "maven"  //Repository名字 需要自己在bintray网站上先添加
         name = "360jiagu"// 发布到Bintray上的项目名字,你在bintray网站上新建的包名
         userOrg = 'caojunhao1314'//Bintray的组织id，可以填写的你的开发者的id
         websiteUrl = siteUrl
@@ -96,6 +96,4 @@ bintray {
         licenses = ["Apache-2.0"]
         publish = true // 是否是公开项目。
     }
-
-//gradlew bintrayUpload
 }
