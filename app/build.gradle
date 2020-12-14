@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.geo.plugin'//resources里面那个文件的名称com.cjh.plugin.properties
+apply plugin: 'com.geo.plugin'//resources里面那个文件的名称com.cjh.plugin.properties
 
 
 def releaseTimeYMD() {
@@ -17,16 +17,6 @@ def getVersionName() {
 }
 
 def verName = getVersionName()
-
-//jiagu {
-//    userName USER_NAME
-//    userPassword USER_PASSWORD
-//    keyStorePath KEY_STOREPATH
-//    keyStorePassword KEYSTORE_PASSWORD
-//    keyAlias RELEASE_KEY_ALIAS
-//    keyAliasPassword KEY_ALIAS_PASSWORD
-//    jarToolsPath JAR_TOOLS_PATH
-//}
 
 android {
     compileSdkVersion 29
@@ -72,11 +62,20 @@ android {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation 'com.android.support:appcompat-v7:+'
         implementation 'com.android.support.constraint:constraint-layout:2.0.2'
-        implementation 'com.geo:plugin:3.0'
         testImplementation 'junit:junit:4.12'
         androidTestImplementation 'com.android.support.test:runner:1.0.2'
         androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     }
+}
+
+jiagu {
+    userName USER_NAME
+    userPassword USER_PASSWORD
+    keyStorePath KEY_STOREPATH
+    keyStorePassword KEYSTORE_PASSWORD
+    keyAlias RELEASE_KEY_ALIAS
+    keyAliasPassword KEY_ALIAS_PASSWORD
+    jarToolsPath JAR_TOOLS_PATH
 }
 
 
