@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.geo.plugin'//resources里面那个文件的名称com.cjh.plugin.properties
 
 
 def releaseTimeYMD() {
@@ -68,14 +67,14 @@ android {
     }
 }
 
-jiagu {
-    userName USER_NAME
-    userPassword USER_PASSWORD
-    keyStorePath KEY_STOREPATH
-    keyStorePassword KEYSTORE_PASSWORD
-    keyAlias RELEASE_KEY_ALIAS
-    keyAliasPassword KEY_ALIAS_PASSWORD
-    jarToolsPath JAR_TOOLS_PATH
-}
+//jiagu {
+//    userName USER_NAME
+//    userPassword USER_PASSWORD
+//    keyStorePath KEY_STOREPATH
+//    keyStorePassword KEYSTORE_PASSWORD
+//    keyAlias RELEASE_KEY_ALIAS
+//    keyAliasPassword KEY_ALIAS_PASSWORD
+//    jarToolsPath JAR_TOOLS_PATH
+//}
 
 

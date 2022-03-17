@@ -5,16 +5,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-//        mavenLocal()//现在插件只是上传到local
-        maven{ url 'https://dl.bintray.com/caojunhao1314/maven'}
+
 
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'
-        // 将项目发布到JCenter 所需要的jar添加依赖
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
-        classpath 'com.geo:plugin:3.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -24,13 +20,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven{ url 'https://dl.bintray.com/caojunhao1314/maven'}
+
     }
 
-    tasks.withType(Javadoc) { // 新增
-        options.addStringOption('Xdoclint:none', '-quiet')
-        options.addStringOption('encoding', 'UTF-8')
-    }
 
 }
 
